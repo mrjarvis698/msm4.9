@@ -1,4 +1,3 @@
-/*
  *  kernel/sched/core.c
  *
  *  Kernel scheduler and related syscalls
@@ -8450,8 +8449,8 @@ void ___might_sleep(const char *file, int line, int preempt_offset)
 	unsigned long preempt_disable_ip;
 
 	rcu_sleep_check(); /* WARN_ON_ONCE() by default, no rate limit reqd. */
-	if ((preempt_count_equals(preempt_offset) && !irqs_disabled() &&
-	     !is_idle_task(current)) || oops_in_progress)
+	if ((preempt_count_equals(preempt_offset) && !irqs_disabled()) ||
+	    oops_in_progress)
 		return;
 	if (system_state != SYSTEM_RUNNING &&
 	    (!__might_sleep_init_called || system_state != SYSTEM_BOOTING))
