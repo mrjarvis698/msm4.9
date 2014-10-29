@@ -2032,27 +2032,33 @@ void rtllib_softmac_new_net(struct rtllib_device *ieee,
 			    struct rtllib_network *net);
 
 void SendDisassociation(struct rtllib_device *ieee, bool deauth, u16 asRsn);
-void rtllib_softmac_xmit(struct rtllib_txb *txb, struct rtllib_device *ieee);
+extern void rtllib_softmac_xmit(struct rtllib_txb *txb,
+				struct rtllib_device *ieee);
 
-void rtllib_stop_send_beacons(struct rtllib_device *ieee);
-void notify_wx_assoc_event(struct rtllib_device *ieee);
-void rtllib_start_ibss(struct rtllib_device *ieee);
-void rtllib_softmac_init(struct rtllib_device *ieee);
-void rtllib_softmac_free(struct rtllib_device *ieee);
-void rtllib_disassociate(struct rtllib_device *ieee);
-void rtllib_stop_scan(struct rtllib_device *ieee);
-bool rtllib_act_scanning(struct rtllib_device *ieee, bool sync_scan);
-void rtllib_stop_scan_syncro(struct rtllib_device *ieee);
-void rtllib_start_scan_syncro(struct rtllib_device *ieee, u8 is_mesh);
-void rtllib_sta_ps_send_null_frame(struct rtllib_device *ieee, short pwr);
-void rtllib_sta_ps_send_pspoll_frame(struct rtllib_device *ieee);
-void rtllib_start_protocol(struct rtllib_device *ieee);
-void rtllib_stop_protocol(struct rtllib_device *ieee, u8 shutdown);
+extern void rtllib_stop_send_beacons(struct rtllib_device *ieee);
+extern void notify_wx_assoc_event(struct rtllib_device *ieee);
+extern void rtllib_softmac_check_all_nets(struct rtllib_device *ieee);
+extern void rtllib_start_bss(struct rtllib_device *ieee);
+extern void rtllib_start_master_bss(struct rtllib_device *ieee);
+extern void rtllib_start_ibss(struct rtllib_device *ieee);
+extern void rtllib_softmac_init(struct rtllib_device *ieee);
+extern void rtllib_softmac_free(struct rtllib_device *ieee);
+extern void rtllib_associate_abort(struct rtllib_device *ieee);
+extern void rtllib_disassociate(struct rtllib_device *ieee);
+extern void rtllib_stop_scan(struct rtllib_device *ieee);
+extern bool rtllib_act_scanning(struct rtllib_device *ieee, bool sync_scan);
+extern void rtllib_stop_scan_syncro(struct rtllib_device *ieee);
+extern void rtllib_start_scan_syncro(struct rtllib_device *ieee, u8 is_mesh);
+extern u8 MgntQuery_MgntFrameTxRate(struct rtllib_device *ieee);
+extern void rtllib_sta_ps_send_null_frame(struct rtllib_device *ieee,
+					  short pwr);
+extern void rtllib_sta_wakeup(struct rtllib_device *ieee, short nl);
+extern void rtllib_sta_ps_send_pspoll_frame(struct rtllib_device *ieee);
+extern void rtllib_check_all_nets(struct rtllib_device *ieee);
+extern void rtllib_start_protocol(struct rtllib_device *ieee);
+extern void rtllib_stop_protocol(struct rtllib_device *ieee, u8 shutdown);
 
-void rtllib_EnableNetMonitorMode(struct net_device *dev, bool bInitState);
-void rtllib_DisableNetMonitorMode(struct net_device *dev, bool bInitState);
-void rtllib_EnableIntelPromiscuousMode(struct net_device *dev, bool bInitState);
-void rtllib_DisableIntelPromiscuousMode(struct net_device *dev,
+extern void rtllib_EnableNetMonitorMode(struct net_device *dev,
 					bool bInitState);
 void rtllib_softmac_stop_protocol(struct rtllib_device *ieee,
 				  u8 mesh_flag, u8 shutdown);
