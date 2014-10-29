@@ -2179,6 +2179,16 @@ void RemoveAllTS(struct rtllib_device *ieee);
 
 extern const long rtllib_wlan_frequencies[];
 
+static inline void rtllib_increment_scans(struct rtllib_device *ieee)
+{
+	ieee->scans++;
+}
+
+static inline int rtllib_get_scans(struct rtllib_device *ieee)
+{
+	return ieee->scans;
+}
+
 static inline const char *escape_essid(const char *essid, u8 essid_len)
 {
 	static char escaped[IW_ESSID_MAX_SIZE * 2 + 1];
