@@ -1603,6 +1603,7 @@ struct ipa_stop_data_usage_quota_resp_msg_v01 {
 	/**<   Standard response type.*/
 };  /* Message */
 
+<<<<<<< HEAD
 /* Request Message; Request from Modem IPA driver to set DPL peripheral pipe */
 struct ipa_install_fltr_rule_req_ex_msg_v01 {
 
@@ -1946,6 +1947,8 @@ struct ipa_configure_ul_firewall_rules_ind_msg_v01 {
 };  /* Message */
 
 
+=======
+>>>>>>> 6480dfd2e9d9... msm: ipa: add new QMI support for ipa stats
 /*Service Message Definition*/
 #define QMI_IPA_INDICATION_REGISTER_REQ_V01 0x0020
 #define QMI_IPA_INDICATION_REGISTER_RESP_V01 0x0020
@@ -1975,6 +1978,7 @@ struct ipa_configure_ul_firewall_rules_ind_msg_v01 {
 #define QMI_IPA_DATA_USAGE_QUOTA_REACHED_IND_V01 0x0033
 #define QMI_IPA_STOP_DATA_USAGE_QUOTA_REQ_V01 0x0034
 #define QMI_IPA_STOP_DATA_USAGE_QUOTA_RESP_V01 0x0034
+<<<<<<< HEAD
 #define QMI_IPA_INIT_MODEM_DRIVER_CMPLT_REQ_V01 0x0035
 #define QMI_IPA_INIT_MODEM_DRIVER_CMPLT_RESP_V01 0x0035
 #define QMI_IPA_INSTALL_FILTER_RULE_EX_REQ_V01 0x0037
@@ -1990,6 +1994,11 @@ struct ipa_configure_ul_firewall_rules_ind_msg_v01 {
 /* add for max length*/
 #define QMI_IPA_INIT_MODEM_DRIVER_REQ_MAX_MSG_LEN_V01 162
 #define QMI_IPA_INIT_MODEM_DRIVER_RESP_MAX_MSG_LEN_V01 25
+=======
+/* add for max length*/
+#define QMI_IPA_INIT_MODEM_DRIVER_REQ_MAX_MSG_LEN_V01 98
+#define QMI_IPA_INIT_MODEM_DRIVER_RESP_MAX_MSG_LEN_V01 21
+>>>>>>> 6480dfd2e9d9... msm: ipa: add new QMI support for ipa stats
 #define QMI_IPA_INDICATION_REGISTER_REQ_MAX_MSG_LEN_V01 8
 #define QMI_IPA_INDICATION_REGISTER_RESP_MAX_MSG_LEN_V01 7
 #define QMI_IPA_INSTALL_FILTER_RULE_REQ_MAX_MSG_LEN_V01 22369
@@ -2021,6 +2030,7 @@ struct ipa_configure_ul_firewall_rules_ind_msg_v01 {
 #define QMI_IPA_STOP_DATA_USAGE_QUOTA_REQ_MAX_MSG_LEN_V01 0
 #define QMI_IPA_STOP_DATA_USAGE_QUOTA_RESP_MAX_MSG_LEN_V01 7
 
+<<<<<<< HEAD
 #define QMI_IPA_INIT_MODEM_DRIVER_CMPLT_REQ_MAX_MSG_LEN_V01 4
 #define QMI_IPA_INIT_MODEM_DRIVER_CMPLT_RESP_MAX_MSG_LEN_V01 7
 
@@ -2036,6 +2046,8 @@ struct ipa_configure_ul_firewall_rules_ind_msg_v01 {
 #define QMI_IPA_INSTALL_UL_FIREWALL_RULES_REQ_MAX_MSG_LEN_V01 9875
 #define QMI_IPA_INSTALL_UL_FIREWALL_RULES_RESP_MAX_MSG_LEN_V01 7
 #define QMI_IPA_INSTALL_UL_FIREWALL_RULES_IND_MAX_MSG_LEN_V01 11
+=======
+>>>>>>> 6480dfd2e9d9... msm: ipa: add new QMI support for ipa stats
 /* Service Object Accessor */
 
 #endif/* IPA_QMI_SERVICE_V01_H */
