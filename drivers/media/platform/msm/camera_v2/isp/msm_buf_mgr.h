@@ -199,6 +199,9 @@ struct msm_isp_buf_mgr {
 	/*Add secure mode*/
 	int secure_enable;
 
+	int num_iommu_ctx;
+	spinlock_t bufq_list_lock;
+	int num_iommu_secure_ctx;
 	int attach_ref_cnt;
 	enum msm_isp_buf_mgr_state attach_state;
 	struct device *isp_dev;
