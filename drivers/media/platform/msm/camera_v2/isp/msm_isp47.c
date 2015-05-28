@@ -3067,6 +3067,7 @@ struct msm_vfe_hardware_info vfe47_hw_info = {
 			.process_error_status = msm_vfe47_process_error_status,
 			.is_module_cfg_lock_needed =
 				msm_vfe47_is_module_cfg_lock_needed,
+<<<<<<< HEAD
 			.ahb_clk_cfg = msm_isp47_ahb_clk_cfg,
 			.start_fetch_eng_multi_pass =
 				msm_vfe47_start_fetch_engine_multi_pass,
@@ -3074,6 +3075,8 @@ struct msm_vfe_hardware_info vfe47_hw_info = {
 				msm_vfe47_set_halt_restart_mask,
 			.set_bus_err_ign_mask = NULL,
 			.get_bus_err_mask = NULL,
+=======
+>>>>>>> 0087ac985fb2... msm: camera: isp: Protect access to module_cfg register with lock
 		},
 		.stats_ops = {
 			.get_stats_idx = msm_vfe47_get_stats_idx,

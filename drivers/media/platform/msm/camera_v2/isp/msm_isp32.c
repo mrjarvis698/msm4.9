@@ -1389,6 +1389,12 @@ static void msm_vfe32_stats_cfg_ub(struct vfe_device *vfe_dev)
 	return;
 }
 
+static bool msm_vfe32_is_module_cfg_lock_needed(
+	uint32_t reg_offset)
+{
+	return false;
+}
+
 static void msm_vfe32_stats_enable_module(struct vfe_device *vfe_dev,
 	uint32_t stats_mask, uint8_t enable)
 {
@@ -1612,6 +1618,8 @@ struct msm_vfe_hardware_info vfe32_hw_info = {
 			.get_halt_restart_mask =
 				msm_vfe32_get_halt_restart_mask,
 			.process_error_status = msm_vfe32_process_error_status,
+			.is_module_cfg_lock_needed =
+				msm_vfe32_is_module_cfg_lock_needed,
 		},
 		.stats_ops = {
 			.get_stats_idx = msm_vfe32_get_stats_idx,
