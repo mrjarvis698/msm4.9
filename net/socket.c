@@ -1934,7 +1934,13 @@ static int ___sys_sendmsg(struct socket *sock, struct user_msghdr __user *msg,
 	int ctl_len;
 	ssize_t err;
 
-	msg_sys->msg_name = &address;
+	err = -EFAULT;
+	if (MSG_CMSG_COMPAT & flags)
+		err = get_compat_msghdr(msg_sys, msg_compat);
+	else
+		err = copy_msghdr_from_user(msg_sys, msg);
+	if (err)
+		return err;
 
 	if (MSG_CMSG_COMPAT & flags)
 		err = get_compat_msghdr(msg_sys, msg_compat, NULL, &iov);
@@ -2134,7 +2140,16 @@ static int ___sys_recvmsg(struct socket *sock, struct user_msghdr __user *msg,
 	struct sockaddr __user *uaddr;
 	int __user *uaddr_len = COMPAT_NAMELEN(msg);
 
+<<<<<<< HEAD
 	msg_sys->msg_name = &addr;
+=======
+	if (MSG_CMSG_COMPAT & flags)
+		err = get_compat_msghdr(msg_sys, msg_compat);
+	else
+		err = copy_msghdr_from_user(msg_sys, msg);
+	if (err)
+		return err;
+>>>>>>> 521c4dd4415c... net: socket: Fix the wrong returns for recvmsg and sendmsg
 
 	if (MSG_CMSG_COMPAT & flags)
 		err = get_compat_msghdr(msg_sys, msg_compat, &uaddr, &iov);
