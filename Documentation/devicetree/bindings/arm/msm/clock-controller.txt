@@ -1,5 +1,4 @@
-Qualcomm Technologies, Inc. MSM Clock controller
-
+<<
 Qualcomm Technologies, Inc. MSM Clock controller devices contain PLLs, root clock
 generators and other clocking hardware blocks that provide stable, low power
 clocking to hardware blocks on Qualcomm Technologies SOCs. The clock controller
@@ -96,6 +95,14 @@ Optional properties:
 - qcom,<clock-name>-opp-store-vcorner: phandle references to the devices for
                         which OPP table is filled with the clock frequency
                          and voltage corner/level.
+- qcom,dev-opp-list:	List of device nodes for which the drivers would need
+			the Operating Performance Points(OPP). OPPs are the
+			frequency/voltage pairs that the device can operate at.
+			drivers can use the OPP library API to operate on the
+			list of OPPs registered.
+- qcom,gfxfreq-corner:  List of frequency/voltage pairs that the device can
+			operate at.
+- <gpu>_handle:		Device node for which the OPP mappings would be added.
 
 Example:
         clock_gcc: qcom,gcc@fc400000 {
