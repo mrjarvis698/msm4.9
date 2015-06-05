@@ -1914,7 +1914,14 @@ static long msm_ispif_subdev_ioctl_unlocked(struct v4l2_subdev *sd,
 		ispif->ispif_rdi2_debug = 0;
 		return 0;
 	}
-	case MSM_SD_SHUTDOWN:
+	case MSM_SD_SHUTDOWN: {
+		struct ispif_device *ispif =
+			(struct ispif_device *)v4l2_get_subdevdata(sd);
+		if (ispif && ispif->base) {
+			mutex_lock(&ispif->mutex);
+			msm_ispif_release(ispif);
+			mutex_unlock(&ispif->mutex);
+		}
 		return 0;
 	default:
 		pr_err_ratelimited("%s: invalid cmd 0x%x received\n",
