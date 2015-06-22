@@ -18,7 +18,7 @@
 		reg = <0xb1d2000 0x1000>;
 		qcom,name = "system-cci"; /* CCI SAW */
 		qcom,saw2-ver-reg = <0xfd0>;
-		qcom,saw2-cfg = <0x01>;
+		qcom,saw2-cfg = <0x14>;
 		qcom,saw2-spm-dly = <0X3c102800>;
 		qcom,saw2-spm-ctl = <0x8>;
 		qcom,cpu-vctl-list = <&CPU0 &CPU1 &CPU2 &CPU3>;
@@ -26,7 +26,7 @@
 		qcom,vctl-port = <0x0>;
 		qcom,phase-port = <0x1>;
 		qcom,supports-rpm-hs;
-		qcom,saw2-pmic-data0 = <0x07030080>; /* VDD_APC0 on */
+		qcom,saw2-pmic-data0 = <0x03030080>; /* VDD_APC0 on */
 		qcom,saw2-pmic-data1 = <0x00030000>; /* VDD_APC0 off  */
 		qcom,pfm-port = <0x2>;
 		qcom,saw2-spm-cmd-ret = [00 03 00 0f];
@@ -41,7 +41,7 @@
 		    <0xb111210 0x8>; /* SPM_QCHANNEL_CFG */
 		qcom,name = "a53-l2"; /* A53 L2 SAW */
 		qcom,saw2-ver-reg = <0xfd0>;
-		qcom,saw2-cfg = <0x01>;
+		qcom,saw2-cfg = <0x14>;
 		qcom,saw2-spm-dly = <0x3c11840a>;
 		qcom,saw2-spm-ctl = <0x8>;
 		qcom,saw2-spm-cmd-wfi = [03 0f]; /* Removed clk gating cmds */
@@ -63,14 +63,14 @@
 		    <0xb011210 0x8>; /* SPM_QCHANNEL_CFG */
 		qcom,name = "a72-l2"; /* A5x L2 SAW */
 		qcom,saw2-ver-reg = <0xfd0>;
-		qcom,saw2-cfg = <0x01>;
+		qcom,saw2-cfg = <0x14>;
 		qcom,saw2-spm-dly = <0x3c11840a>;
 		qcom,saw2-spm-ctl = <0x8>;
-		qcom,cpu-vctl-list = <&CPU4 &CPU5>;
+		qcom,cpu-vctl-list = <&CPU4 &CPU5 &CPU6 &CPU7>;
 		qcom,vctl-timeout-us = <50>;
 		qcom,vctl-port = <0x0>;
 		qcom,phase-port = <0x1>;
-		qcom,saw2-pmic-data0 = <0x07030080>; /* VDD_APC1 on */
+		qcom,saw2-pmic-data0 = <0x03030080>; /* VDD_APC1 on */
 		qcom,saw2-pmic-data1 = <0x00030000>; /* VDD_APC1 off  */
 		qcom,pfm-port = <0x2>;
 		qcom,saw2-spm-cmd-wfi = [03 0f];
@@ -188,6 +188,52 @@
 		    <0xb098090 0x8>; /* QCHANNEL_STANDBY_FSM_CTL */
 		qcom,name = "cpu5";
 		qcom,cpu = <&CPU5>;
+		qcom,saw2-ver-reg = <0xfd0>;
+		qcom,saw2-cfg = <0x01>;
+		qcom,saw2-spm-dly = <0X3c102800>;
+		qcom,saw2-spm-ctl = <0x8>;
+		qcom,use-c1-exit-fsm-for-wfi;
+		qcom,saw2-spm-cmd-wfi = [03 0f];
+		qcom,saw2-spm-cmd-ret = [40 50 2b 00 c0 14 3b b6 e8 98 a0 1b 50
+			03 2f 0b 50 2b 92 1b e2 1b b0 a0 14 3b 70 70 c0 00 50 40
+			0f];
+		qcom,saw2-spm-cmd-pc = [50 2b 30 40 00 c0 14 3b 24 3b 80 e2 92
+			1b 50 03 76 76 0b 50 2b 92 e2 1b 80 24 3b 14 3b 70 70
+			c0 04 46 30 50 0f];
+	};
+
+	qcom,spm@b0a9000 {
+		compatible = "qcom,spm-v2";
+		#address-cells = <1>;
+		#size-cells = <1>;
+		reg = <0xb0a9000 0x1000>,
+		    <0xb0a8064 0x8>, /* SPM_QCHANNEL_CFG */
+		    <0xb0a8090 0x8>; /* QCHANNEL_STANDBY_FSM_CTL */
+		qcom,name = "cpu6";
+		qcom,cpu = <&CPU6>;
+		qcom,saw2-ver-reg = <0xfd0>;
+		qcom,saw2-cfg = <0x01>;
+		qcom,saw2-spm-dly = <0X3c102800>;
+		qcom,saw2-spm-ctl = <0x8>;
+		qcom,use-c1-exit-fsm-for-wfi;
+		qcom,saw2-spm-cmd-wfi = [03 0f];
+		qcom,saw2-spm-cmd-ret = [40 50 2b 00 c0 14 3b b6 e8 98 a0 1b 50
+			03 2f 0b 50 2b 92 1b e2 1b b0 a0 14 3b 70 70 c0 00 50 40
+			0f];
+		qcom,saw2-spm-cmd-pc = [50 2b 30 40 00 c0 14 3b 24 3b 80 e2 92
+			1b 50 03 76 76 0b 50 2b 92 e2 1b 80 24 3b 14 3b 70 70
+			c0 04 46 30 50 0f];
+	};
+
+	qcom,spm@b0b9000 {
+		compatible = "qcom,spm-v2";
+		#address-cells = <1>;
+		#size-cells = <1>;
+		reg = <0xb0b9000 0x1000>,
+		    <0xb0b8064 0x8>, /* SPM_QCHANNEL_CFG */
+		    <0xb0b8090 0x8>; /* QCHANNEL_STANDBY_FSM_CTL */
+		qcom,name = "cpu7";
+		qcom,cpu = <&CPU7>;
 		qcom,saw2-ver-reg = <0xfd0>;
 		qcom,saw2-cfg = <0x01>;
 		qcom,saw2-spm-dly = <0X3c102800>;
@@ -342,7 +388,7 @@
 				label = "a72";
 				qcom,spm-device-names = "l2";
 				qcom,default-level=<0>;
-				qcom,cpu = <&CPU4 &CPU5>;
+				qcom,cpu = <&CPU4 &CPU5 &CPU6 &CPU7>;
 
 				qcom,pm-cluster-level@0{
 					reg = <0>;
@@ -373,7 +419,7 @@
 					qcom,ss-power = <124>;
 					qcom,energy-overhead = <457850>;
 					qcom,time-overhead = <900>;
-					qcom,min-child-idx = <2>;
+					qcom,min-child-idx = <3>;
 				};
 
 				qcom,pm-cluster-level@3{
@@ -607,15 +653,15 @@
 		clock-names = "cpu0_clk", "cpu1_clk", "cpu2_clk",
 				"cpu3_clk", "cpu4_clk", "cpu5_clk",
 				"cpu6_clk", "cpu7_clk", "l2_clk";
-		clocks = <&clock_cpu clk_a53ssmux_bc>,
-			 <&clock_cpu clk_a53ssmux_bc>,
-			 <&clock_cpu clk_a53ssmux_bc>,
-			 <&clock_cpu clk_a53ssmux_bc>,
-			 <&clock_cpu clk_a53ssmux_lc>,
-			 <&clock_cpu clk_a53ssmux_lc>,
-			 <&clock_cpu clk_a53ssmux_lc>,
-			 <&clock_cpu clk_a53ssmux_lc>,
-			 <&clock_cpu clk_a53ssmux_cci>;
+		clocks = <&clock_cpu clk_a53_clk>,
+			 <&clock_cpu clk_a53_clk>,
+			 <&clock_cpu clk_a53_clk>,
+			 <&clock_cpu clk_a53_clk>,
+			 <&clock_cpu clk_a72_clk>,
+			 <&clock_cpu clk_a72_clk>,
+			 <&clock_cpu clk_a72_clk>,
+			 <&clock_cpu clk_a72_clk>,
+			 <&clock_cpu clk_cci_clk>;
 
 		qcom,tz-flushes-cache;
 
