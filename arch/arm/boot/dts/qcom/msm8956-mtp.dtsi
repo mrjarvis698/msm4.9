@@ -77,6 +77,20 @@
 			debounce-interval = <15>;
 		};
 	};
+
+	sound-9335 {
+		qcom,msm-gpios =
+			"us_eu_gpio";
+		qcom,pinctrl-names =
+			"all_off",
+			"us_eu_gpio_act";
+		pinctrl-names =
+			"all_off",
+			"us_eu_gpio_act";
+		pinctrl-0 = <&cross_conn_det_sus>;
+		pinctrl-1 = <&cross_conn_det_act>;
+		qcom,cdc-us-euro-gpios = <&msm_gpio 144 0>;
+	};
 };
 
 &blsp1_uart2 {
@@ -160,4 +174,55 @@
 	cd-gpios = <&msm_gpio 100 0x1>;
 
 	status = "ok";
+};
+
+/* CoreSight */
+&tpiu {
+	pinctrl-names = "sdcard", "trace", "swduart",
+			"swdtrc", "jtag", "spmi";
+	/* NIDnT */
+	pinctrl-0 = <&qdsd_clk_sdcard &qdsd_cmd_sdcard
+		     &qdsd_data0_sdcard &qdsd_data1_sdcard
+		     &qdsd_data2_sdcard &qdsd_data3_sdcard>;
+	pinctrl-1 = <&qdsd_clk_trace &qdsd_cmd_trace
+		     &qdsd_data0_trace &qdsd_data1_trace
+		     &qdsd_data2_trace &qdsd_data3_trace>;
+	pinctrl-2 = <&qdsd_cmd_swduart &qdsd_data0_swduart
+		     &qdsd_data1_swduart &qdsd_data2_swduart
+		     &qdsd_data3_swduart>;
+	pinctrl-3 = <&qdsd_clk_swdtrc &qdsd_cmd_swdtrc
+		     &qdsd_data0_swdtrc &qdsd_data1_swdtrc
+		     &qdsd_data2_swdtrc &qdsd_data3_swdtrc>;
+	pinctrl-4 = <&qdsd_cmd_jtag &qdsd_data0_jtag
+		     &qdsd_data1_jtag &qdsd_data2_jtag
+		     &qdsd_data3_jtag>;
+	pinctrl-5 = <&qdsd_clk_spmi &qdsd_cmd_spmi
+		     &qdsd_data0_spmi &qdsd_data3_spmi>;
+};
+
+&slim_msm {
+	tasha_codec {
+		swr_master {
+			compatible = "qcom,swr-wcd";
+			#address-cells = <2>;
+			#size-cells = <0>;
+			wsa881x@20170212 {
+				compatible = "qcom,wsa881x";
+				reg = <0x00 0x20170212>;
+				pinctrl-names = "wsa_spkr_sd_act",
+						"wsa_spkr_sd_sus";
+				pinctrl-0 = <&wsa_spkr_sd_act>;
+				pinctrl-1 = <&wsa_spkr_sd_sus>;
+			};
+
+			wsa881x@20170211 {
+				compatible = "qcom,wsa881x";
+				reg = <0x00 0x20170211>;
+				pinctrl-names = "wsa_spkr_sd_act",
+						"wsa_spkr_sd_sus";
+				pinctrl-0 = <&wsa_spkr_sd_act>;
+				pinctrl-1 = <&wsa_spkr_sd_sus>;
+			};
+		};
+	};
 };
