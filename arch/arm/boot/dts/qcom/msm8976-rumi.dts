@@ -13,11 +13,11 @@
 
 /dts-v1/;
 
-#include "msm8956.dtsi"
+#include "msm8976.dtsi"
 
 / {
-	model = "Qualcomm Technologies, Inc. MSM 8956 RUMI";
-	compatible = "qcom,msm8956-rumi", "qcom,msm8956", "qcom,rumi";
+	model = "Qualcomm Technologies, Inc. MSM 8976 RUMI";
+	compatible = "qcom,msm8976-rumi", "qcom,msm8976", "qcom,rumi";
 	qcom,board-id= <15 0>;
 };
 
@@ -104,4 +104,12 @@
 
 &clock_gcc_gfx {
 	compatible = "qcom,dummycc";
+};
+
+&pmi8950_fg {
+	status = "disabled";
+};
+
+&pmi8950_charger {
+	status = "disabled";
 };
