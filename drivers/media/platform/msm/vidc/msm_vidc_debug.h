@@ -54,14 +54,19 @@ enum msm_vidc_debugfs_event {
 
 extern int msm_vidc_debug;
 extern int msm_vidc_debug_out;
-extern int msm_vidc_fw_debug;
-extern int msm_vidc_fw_debug_mode;
-extern int msm_vidc_fw_low_power_mode;
-extern bool msm_vidc_fw_coverage;
-extern bool msm_vidc_sys_idle_indicator;
-extern bool msm_vidc_thermal_mitigation_disabled;
-extern bool msm_vidc_clock_scaling;
-extern bool msm_vidc_syscache_disable;
+extern int msm_fw_debug;
+extern int msm_fw_debug_mode;
+extern int msm_fw_low_power_mode;
+extern int msm_vidc_hw_rsp_timeout;
+extern u32 msm_fw_coverage;
+extern int msm_vidc_reset_clock_control;
+extern int msm_vidc_regulator_scaling;
+extern int msm_vidc_vpe_csc_601_to_709;
+extern int msm_vidc_dec_dcvs_mode;
+extern int msm_vidc_enc_dcvs_mode;
+extern int msm_vidc_sys_idle_indicator;
+extern u32 msm_vidc_firmware_unload_delay;
+extern int msm_vidc_thermal_mitigation_disabled;
 
 #define VIDC_MSG_PRIO2STRING(__level) ({ \
 	char *__str; \
