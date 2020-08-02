@@ -392,14 +392,9 @@ KBUILD_CFLAGS   := -Wall -Wundef -Wstrict-prototypes -Wno-trigraphs \
 		   -fno-strict-aliasing -fno-common -fshort-wchar \
 		   -Werror-implicit-function-declaration \
 		   -Wno-format-security \
-<<<<<<< HEAD
-		   -std=gnu89
-KBUILD_CPPFLAGS := -D__KERNEL__
-=======
 		   -fno-delete-null-pointer-checks \
 		   -std=gnu89
 
->>>>>>> c7c867483e20... kernel: use the gnu89 standard explicitly
 KBUILD_AFLAGS_KERNEL :=
 KBUILD_CFLAGS_KERNEL :=
 KBUILD_AFLAGS_MODULE  := -DMODULE
